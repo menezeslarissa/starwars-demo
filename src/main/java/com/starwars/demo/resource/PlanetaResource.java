@@ -29,7 +29,7 @@ public class PlanetaResource {
     public ResponseEntity<Object> update(@RequestBody PlanetaDTO planetaDTO,
                                          @PathVariable("id") String id) {
 
-        if(planetaDTO.get_id() == null) {
+        if(planetaDTO.get_id() == null || planetaDTO.get_id().trim().equalsIgnoreCase("")) {
             return ResponseEntity.badRequest().body(new BasicResponse("Id não pode ser nulo!"));
         } else {
             if(planetaService.getById(id).isPresent()) {
